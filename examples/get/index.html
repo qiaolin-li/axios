@@ -8,26 +8,95 @@
     <h1>axios.get</h1>
     <ul id="people" class="list-unstyled"></ul>
 
-    <script src="/axios.min.js"></script>
+    <script src="axios.js"></script>
     <script>
-      axios.get('/get/server')
-        .then(function (response) {
-          document.getElementById('people').innerHTML = response.data.map(function (person) {
-            return (
-              '<li class="row">' +
-                '<img src="https://avatars.githubusercontent.com/u/' + person.avatar + '?s=50" class="col-md-1"/>' +
-                '<div class="col-md-3">' +
-                  '<strong>' + person.name + '</strong>' +
-                  '<div>Github: <a href="https://github.com/' + person.github + '" target="_blank">' + person.github + '</a></div>' +
-                  '<div>Twitter: <a href="https://twitter.com/' + person.twitter + '" target="_blank">' + person.twitter + '</a></div>' +
-                '</div>' +
-              '</li><br/>'
-            );
-          }).join('');
-        })
-        .catch(function (err) {
-          document.getElementById('people').innerHTML = '<li class="text-danger">' + err.message + '</li>';
+      var source = axios.CancelToken.source()
+    
+    
+      // axios.get('/get/server', {
+      //   cancelToken : source.token
+      // })
+      //   .then(function (response) {
+      //     document.getElementById('people').innerHTML = response.data.map(function (person) {
+      //       return (
+      //         '<li class="row">' +
+      //           '<img src="https://avatars.githubusercontent.com/u/' + person.avatar + '?s=50" class="col-md-1"/>' +
+      //           '<div class="col-md-3">' +
+      //             '<strong>' + person.name + '</strong>' +
+      //             '<div>Github: <a href="https://github.com/' + person.github + '" target="_blank">' + person.github + '</a></div>' +
+      //             '<div>Twitter: <a href="https://twitter.com/' + person.twitter + '" target="_blank">' + person.twitter + '</a></div>' +
+      //           '</div>' +
+      //         '</li><br/>'
+      //       );
+      //     }).join('');
+      //   })
+      //   .catch(function (err) {
+      //     console.log("1 - " + err);
+      //     document.getElementById('people').innerHTML = '<li class="text-danger">' + err.message + '</li>';
+      //   });
+
+
+
+
+      //   axios.get('/get/server', {
+      //   cancelToken : source.token
+      // })
+      //   .then(function (response) {
+      //     document.getElementById('people').innerHTML = response.data.map(function (person) {
+      //       return (
+      //         '<li class="row">' +
+      //           '<img src="https://avatars.githubusercontent.com/u/' + person.avatar + '?s=50" class="col-md-1"/>' +
+      //           '<div class="col-md-3">' +
+      //             '<strong>' + person.name + '</strong>' +
+      //             '<div>Github: <a href="https://github.com/' + person.github + '" target="_blank">' + person.github + '</a></div>' +
+      //             '<div>Twitter: <a href="https://twitter.com/' + person.twitter + '" target="_blank">' + person.twitter + '</a></div>' +
+      //           '</div>' +
+      //         '</li><br/>'
+      //       );
+      //     }).join('');
+      //   })
+      //   .catch(function (err) {
+      //     console.log("2 - " + err);
+      //     document.getElementById('people').innerHTML = '<li class="text-danger">' + err.message + '</li>';
+      //   });
+
+
+      //   source.cancel("别搞了！");
+
+
+
+      var fn;
+      var promise = new Promise((resolve, reject) =>{
+        console.log("pppp1")
+        // resolve("didid");
+        console.log("pppp2")
+        debugger
+        fn = resolve;
+      });
+      // fn("hehe 1");
+      console.log("111");
+        promise.then(rs =>{
+          console.log("then1   " + rs);
         });
+        // fn("hehe 2");
+        promise.then(rs =>{
+          console.log("then2   " + rs);
+        });
+        promise.then(rs =>{
+          console.log("then3   " + rs);
+        });
+      fn("hehe 3");
+      promise.then(rs =>{
+        console.log("then4   " + rs);
+      });
+      promise.then(rs =>{
+        console.log("then5   " + rs);
+      });
+      promise.then(rs =>{
+        console.log("then6   " + rs);
+      });
+      
+
     </script>
   </body>
 </html>
